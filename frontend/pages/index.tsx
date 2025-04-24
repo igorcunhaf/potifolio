@@ -1,44 +1,57 @@
-import type { NextPage, GetServerSideProps } from 'next';
-import api from '../utils/api';
+import { NextPage } from 'next';
 import Link from 'next/link';
+import { FaLaptopCode, FaDatabase, FaServer, FaGithub } from 'react-icons/fa';
 
-interface Project { id: number; title: string; }
-interface Post { id: number; title: string; }
+const Home: NextPage = () => (
+  <div className="min-h-screen bg-[#F9FAFB] text-[#111827] animate-fade-in px-6 py-12">
+    <div className="max-w-5xl mx-auto">
+      {/* Hero Section */}
+      <section className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-4">
+          Olá, sou Igor Cunha Ferreira
+        </h1>
+        <p className="text-xl md:text-2xl text-[#6B7280] max-w-xl mx-auto mb-6">
+          Desenvolvedor Fullstack apaixonado por tecnologia, performance e boas práticas de código.
+        </p>
+        <div className="flex justify-center gap-4">
+          <Link href="/projetos" legacyBehavior>
+            <a className="px-6 py-3 bg-[#1E3A8A] text-white rounded-lg font-medium hover:bg-[#3748a5] transition">
+              Ver Projetos
+            </a>
+          </Link>
+          <Link href="/contato" legacyBehavior>
+            <a className="px-6 py-3 border-2 border-[#1E3A8A] text-[#1E3A8A] rounded-lg font-medium hover:bg-[#1E3A8A] hover:text-white transition">
+              Entrar em Contato
+            </a>
+          </Link>
+        </div>
+      </section>
 
-interface Props { projects: Project[]; posts: Post[]; }
-
-const Home: NextPage<Props> = ({ projects, posts }) => (
-  <div>
-    <h1 className="text-3xl font-bold mb-6">Bem-vindo ao meu Portfólio</h1>
-    <section className="mb-8">
-      <h2 className="text-2xl font-semibold mb-4">Projetos Recentes</h2>
-      <ul className="space-y-2">
-        {projects.map(p => (
-          <li key={p.id}>
-            <Link href={`/projetos/${p.id}`} className="text-blue-600 hover:underline">{p.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </section>
-    <section>
-      <h2 className="text-2xl font-semibold mb-4">Artigos Recentes</h2>
-      <ul className="space-y-2">
-        {posts.map(p => (
-          <li key={p.id}>
-            <Link href={`/blog/${p.id}`} className="text-blue-600 hover:underline">{p.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+      {/* Skills Section */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+          <FaLaptopCode className="text-3xl mx-auto text-[#3B82F6] mb-2" />
+          <h3 className="font-semibold">Frontend</h3>
+          <p className="text-sm text-[#6B7280]">React, Vue.js, AngularJS</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+          <FaServer className="text-3xl mx-auto text-[#3B82F6] mb-2" />
+          <h3 className="font-semibold">Backend</h3>
+          <p className="text-sm text-[#6B7280]">Java, Spring Boot, Node.js</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+          <FaDatabase className="text-3xl mx-auto text-[#3B82F6] mb-2" />
+          <h3 className="font-semibold">Banco de Dados</h3>
+          <p className="text-sm text-[#6B7280]">PostgreSQL, MySQL</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+          <FaGithub className="text-3xl mx-auto text-[#3B82F6] mb-2" />
+          <h3 className="font-semibold">DevOps</h3>
+          <p className="text-sm text-[#6B7280]">Git, GitLab CI/CD</p>
+        </div>
+      </section>
+    </div>
   </div>
 );
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const [projectsRes, postsRes] = await Promise.all([
-    api.get('/projects'),
-    api.get('/posts'),
-  ]);
-  return { props: { projects: projectsRes.data, posts: postsRes.data } };
-};
 
 export default Home;

@@ -5,23 +5,36 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.8s ease-out both',
+      },
+    },
   },
   plugins: [
     require('daisyui'),
   ],
-  // (opcional) escolha ou crie temas
   daisyui: {
     themes: [
       "light",
       "dark",
       {
         mytheme: {
-          "primary": "#4f46e5",
-          "secondary": "#9333ea",
-          "accent": "#37cdbe",
-          "neutral": "#3d4451",
-          "base-100": "#ffffff",
+          "primary": "#1E3A8A",   // azul escuro: Header e botões principais
+          "secondary": "#3B82F6", // azul médio: links, ícones ativos
+          "accent": "#3B82F6",
+          "neutral": "#9CA3AF",   // cinza neutro
+          "base-100": "#F9FAFB",  // fundo branco
+          "info": "#3B82F6",
+          "success": "#10B981",
+          "warning": "#FBBF24",
+          "error": "#EF4444",
         },
       },
     ],
