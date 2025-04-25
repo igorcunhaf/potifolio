@@ -12,7 +12,7 @@ export class Project {
   description: string;
 
   @Column()
-  technologies: string; // Ex: "NestJS, React, MySQL"
+  technologies: string;
 
   @Column({ nullable: true })
   githubLink: string;

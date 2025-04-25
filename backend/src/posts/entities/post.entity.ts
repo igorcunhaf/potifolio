@@ -10,7 +10,7 @@ export class Post {
   @Column()
   title: string;
 
-  @Column({ unique: true })
+  @Column({ nullable: true })
   slug: string;
 
   @Column('text')
@@ -19,7 +19,7 @@ export class Post {
   @CreateDateColumn()
   createdAt: Date;
 
-  @ManyToOne(() => User, user => user.posts, { nullable: false })
+  @ManyToOne(() => User, user => user.posts, { nullable: true })
   @JoinColumn({ name: 'user_id' })
   user: User;
 
