@@ -27,9 +27,16 @@ const Blog: NextPage<Props> = ({ posts }) => (
             })}
           </p>
           <h2 className="text-2xl font-semibold text-[#1E3A8A] mb-2">{post.title}</h2>
-          <p className="text-[#374151] mb-4">
-            {post.content.length > 200 ? post.content.slice(0, 200) + '...' : post.content}
-          </p>
+          
+          <div
+            className="text-[#374151] mb-4"
+            dangerouslySetInnerHTML={{
+              __html: post.content.length > 200
+                ? post.content.slice(0, 200) + '...'
+                : post.content
+            }}
+          />
+
           <Link href={`/blog/${post.id}`} legacyBehavior>
             <a className="text-[#3B82F6] font-medium hover:underline">Ler mais →</a>
           </Link>
