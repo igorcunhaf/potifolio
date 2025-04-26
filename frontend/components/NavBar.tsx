@@ -21,6 +21,11 @@ const Navbar = () => {
           <Link href="/sobre" legacyBehavior><a className="hover:text-[#3B82F6]">Sobre</a></Link>
           <Link href="/projetos" legacyBehavior><a className="hover:text-[#3B82F6]">Projetos</a></Link>
           <Link href="/blog" legacyBehavior><a className="hover:text-[#3B82F6]">Blog</a></Link>
+          <Link href="/login" legacyBehavior>
+            <a className="bg-[#3B82F6] text-white px-4 py-2 rounded hover:bg-white hover:text-[#1E3A8A] transition">
+              Intranet
+            </a>
+          </Link>
           <Link href="/contato" legacyBehavior>
             <a className="bg-white text-[#1E3A8A] px-4 py-2 rounded hover:bg-[#3B82F6] hover:text-white transition">
               Contato
@@ -43,6 +48,11 @@ const Navbar = () => {
           <Link href="/sobre" legacyBehavior><a className="block hover:text-[#3B82F6]">Sobre</a></Link>
           <Link href="/projetos" legacyBehavior><a className="block hover:text-[#3B82F6]">Projetos</a></Link>
           <Link href="/blog" legacyBehavior><a className="block hover:text-[#3B82F6]">Blog</a></Link>
+          <Link href="/intranet" legacyBehavior>
+            <a className="block bg-[#3B82F6] text-white px-4 py-2 rounded hover:bg-white hover:text-[#1E3A8A] transition">
+              Intranet
+            </a>
+          </Link>
           <Link href="/contato" legacyBehavior>
             <a className="block bg-white text-[#1E3A8A] px-4 py-2 rounded hover:bg-[#3B82F6] hover:text-white transition">
               Contato
