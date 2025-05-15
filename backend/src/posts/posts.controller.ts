@@ -8,11 +8,10 @@ import { UpdatePostDto } from './dto/update-post.dto';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Request() req, @Body() createPostDto: CreatePostDto) {
-    return this.postsService.create(createPostDto, req.user.id);
-  }
+  create(@Body() createPostDto: CreatePostDto) {
+    return this.postsService.create(createPostDto, 2);
+  }  
 
   @Get()
   findAll() {
